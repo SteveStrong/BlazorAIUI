@@ -1,0 +1,44 @@
+@page "/change-prompts"
+@inject PromptService PromptService
+
+<h3>Change Prompts</h3>
+
+<EditForm Model="@formData" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label for="prompt">Prompt:</label>
+        <InputText id="prompt" @bind-Value="formData.Prompt" />
+    </div>
+
+    <button type="submit">Submit</button>
+</EditForm>
+
+@code {
+    private FormData formData = new FormData();
+
+    private async Task HandleValidSubmit()
+    {
+        var content = new FormUrlEncodedContent(new[]
+        {
+            new KeyValuePair<string, string>("prompt", formData.Prompt)
+        });
+
+        var response = await PromptService.ChangePromptsAsync(content);
+
+        if (response.IsSuccessStatusCode)
+        {
+            // Handle success
+        }
+        else
+        {
+            // Handle error
+        }
+    }
+
+    public class FormData
+    {
+        public string Prompt { get; set; }
+    }
+}
