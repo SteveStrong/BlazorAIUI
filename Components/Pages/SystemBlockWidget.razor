@@ -7,10 +7,18 @@
 @namespace Plugin_710.DiagramComponents
 @rendermode @(new InteractiveServerRenderMode(false))
 
-<RadzenStack Style="width:250px;border: 1px solid black" Gap="0">
+
+<RadzenStack Style="@OuterStyle()" Gap="0">
+    <RadzenStack Orientation="Orientation.Horizontal" Style="border: 1px solid black" Gap="4">
+        <RadzenButton ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Small" Text="Vertical"
+            Click="@DoVertical" />
+        <RadzenButton style="padding-left: 10px;" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat"
+            Size="ButtonSize.Small" Text="Horizontal" Click="@DoHorizontal" />
+    </RadzenStack>
+
     <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.SpaceBetween"
-        Style="border: 1px solid black" Gap="0">
-        <RadzenStack Orientation="Orientation.Horizontal" Gap="0">
+        Style="border: 1px solid black">
+        <RadzenStack Orientation="Orientation.Horizontal">
             <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center"
                 Style="width: 40px; font-size: 8pt;border-right: 1px solid black">
                 @Quantity

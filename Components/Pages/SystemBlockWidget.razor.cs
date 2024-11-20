@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 
 using Plugin_710.Model;
+using Radzen.Blazor.Rendering;
 
 namespace Plugin_710.DiagramComponents;
 
@@ -57,6 +58,24 @@ public class SystemBlockWidgetBase : ComponentBase
     {
         var style = "background-color: green";
         return style;
+    }
+
+    public string OuterStyle()
+    {
+        var style = "width:250px;border: 1px solid black;background-color: lightgray";
+        return style;
+    }
+
+    public string GenerateClasses()
+    {
+        return ClassList.Create("value-text").Add("danger", true)
+                                 .Add("info", false)
+                                 .Add("warning", false)
+                                 .Add("success", false)
+                                 .Add("neutral", false)
+                                 .Add("rz-panel-titlebar")
+                                 .ToString();
+
     }
 
 
