@@ -12,19 +12,22 @@ namespace Plugin_710.Model;
 //     target.SetValueIfNotNull("Quantity", qtyReq);
 //     target.SetValueIfNotNull("Supplier", supplier);
 
-public record Hyperlink (string name, string tag, string url);
+public record Hyperlink(string name, string tag, string url);
 
-public class SystemBlock_710 
+public class SystemBlock_710
 {
 
-    public string SerializedAssembly => "SerializedAssembly";
-    public string MakeBuy => "MakeBuy";
-    public string LruSru => "LruSru";
-    public string Quantity => "Quantity";
+    public string SerializedAssembly => "";
+    public string MakeBuy => "M";
+    public string Name => "AC SUPPLY ENCLOSURE (ASE)";
+    public string LruSru => "L";
+    public string Quantity => "1";
     public string Supplier => "Supplier";
     public string SourceURL => "SourceURL";
     public string Address => "Address";
-    public string Description => "Description";
+    public string Description => "AC SUPPLY ENCLOSURE ASSY";
+    public string ReferenceDesignator => "UNIT 15";
+    public string PartNumber => "8626496";
 
 
 
@@ -36,7 +39,7 @@ public class SystemBlock_710
 
     public void ZoomTo()
     {
-       //model?.ZoomTo(this);
+        //model?.ZoomTo(this);
     }
 
     public void DoHorizontal()
@@ -45,7 +48,7 @@ public class SystemBlock_710
     }
 
     public void DoVertical()
-    {        
+    {
 
     }
     public void GoToRoot()
@@ -70,7 +73,7 @@ public class SystemBlock_710
 
 
 
- 
 
- 
+
+
 }

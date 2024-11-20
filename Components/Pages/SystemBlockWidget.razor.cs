@@ -37,7 +37,7 @@ public class SystemBlockWidgetBase : ComponentBase
         return false;
     }
 
-    
+
     public bool IsRoot()
     {
         var comp = GetSystemBlock();
@@ -89,11 +89,14 @@ public class SystemBlockWidgetBase : ComponentBase
 
     public string SerializedAssembly => GetSystemBlock().SerializedAssembly;
     public string MakeBuy => GetSystemBlock().MakeBuy;
+    public string Name => GetSystemBlock().Name;
     public string LruSru => GetSystemBlock().LruSru;
     public string Quantity => GetSystemBlock().Quantity;
     public string Supplier => GetSystemBlock().Supplier;
     public string SourceURL => GetSystemBlock().SourceURL;
     public string Address => GetSystemBlock().Address;
-    public string Description => GetSystemBlock().Description;   
+    public string Description => GetSystemBlock().Description;
+    public string ReferenceDesignator => GetSystemBlock().ReferenceDesignator;
+    public string PartNumber => GetSystemBlock().PartNumber;
 
 }

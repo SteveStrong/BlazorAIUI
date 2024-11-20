@@ -7,46 +7,95 @@
 @namespace Plugin_710.DiagramComponents
 @rendermode @(new InteractiveServerRenderMode(false))
 
-
-    <div class="blockwidget" style="@BlockStyle()">
+<RadzenStack Style="width:250px;border: 1px solid black" Gap="0">
+    <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.SpaceBetween"
+        Style="border: 1px solid black" Gap="0">
+        <RadzenStack Orientation="Orientation.Horizontal" Gap="0">
+            <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center"
+                Style="width: 40px; font-size: 8pt;border-right: 1px solid black">
+                @Quantity
+            </RadzenStack>
+            <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center"
+                Style="width: 40px; font-size: 8pt;border-right: 1px solid black">
+                @SerializedAssembly
+            </RadzenStack>
+        </RadzenStack>
+        <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center"
+            Style="width: 60px; font-size: 8pt;border-left: 1px solid black">
+            @ReferenceDesignator
+        </RadzenStack>
+    </RadzenStack>
+    <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center"
+        Style="border: 1px solid black;font-size: 8pt;">
         <div>
-            @if(IsRoot())
-            {   
-                <RadzenButton ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Small" Text="Vertical" Click="@DoVertical" />
-                <RadzenButton style="padding-left: 10px;" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Small" Text="Horizontal" Click="@DoHorizontal" />
-            }
-            @* <RadzenButton ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Small" Text="Make Root" Click="@GoToRoot" /> 
+            @Name
+        </div>
+    </RadzenStack>
+    <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center"
+        Style="border: 1px solid black;font-size: 8pt;">
+        <div>
+            @Description
+        </div>
+    </RadzenStack>
+    <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.SpaceBetween"
+        Style="border: 1px solid black">
+        <div>
+            <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center"
+                Style="width: 40px; font-size: 8pt;border-right: 1px solid black">
+                @LruSru
+            </RadzenStack>
+        </div>
+        <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center" Style="font-size: 8pt">
+            @PartNumber
+        </RadzenStack>
+        <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center"
+            style="width: 40px; font-size: 8pt;border-left: 1px solid black">
+            @MakeBuy
+        </RadzenStack>
+    </RadzenStack>
+</RadzenStack>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<div class="blockwidget" style="@BlockStyle()">
+    <div>
+        @if (IsRoot())
+        {
+            <RadzenButton ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Small" Text="Vertical"
+                Click="@DoVertical" />
+            <RadzenButton style="padding-left: 10px;" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat"
+                Size="ButtonSize.Small" Text="Horizontal" Click="@DoHorizontal" />
+        }
+        @* <RadzenButton ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Small" Text="Make Root" Click="@GoToRoot" /> 
             @if(HasParent())
             {
                 <RadzenButton style="padding-left: 10px;" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Small" Text="Parent" Click="@GoToParent" /> 
             } *@
-            @if(HasChildren())
-            {
-                <RadzenButton style="padding-left: 10px;" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Size="ButtonSize.Small" Text="Children" Click="@ToggleChildren" /> 
-            }
-         </div>
-
-        <div style="margin-left: 20px;">
-            @GetTitle()
-        </div>
-
-        @foreach (var link in GetHyperlinks())
+        @if (HasChildren())
         {
-            <span>@link.tag: (</span>
-            <a href="@link.url" target="_blank">@link.name</a>
-            <span>)</span> <br />
+            <RadzenButton style="padding-left: 10px;" ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat"
+                Size="ButtonSize.Small" Text="Children" Click="@ToggleChildren" />
         }
-        <div>@Description</div>
-        <div>@SerializedAssembly</div>
-        <div>@MakeBuy</div>
-        <div>@LruSru</div>
-        <div>@Quantity</div>
-        <div>@Supplier</div>
+    </div>
 
-        <br />
-        @* <GroupNodes Group="Group" /> *@
+    <div style="margin-left: 20px;">
+        @GetTitle()
+    </div>
 
-        @* @foreach (var port in Ports())
+    @foreach (var link in GetHyperlinks())
+    {
+        <span>@link.tag: (</span>
+        <a href="@link.url" target="_blank">@link.name</a>
+        <span>)</span> <br />
+    }
+    <br />
+    @* <GroupNodes Group="Group" /> *@
+
+    @* @foreach (var port in Ports())
         {
             // In case you have any ports to show
             // IMPORTANT: You are always in charge of rendering ports
@@ -54,8 +103,8 @@
         } *@
 
 
-    </div>
-       
+</div>
+
 
 
 
